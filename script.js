@@ -59,12 +59,14 @@ document.querySelectorAll('.menu-item, .price-card, .borda-item, .esfirra-item')
     observer.observe(item);
 });
 
-// Parallax effect for hero section
+// Parallax effect for hero section (apenas desktop)
 window.addEventListener('scroll', () => {
-    const scrolled = window.pageYOffset;
-    const hero = document.querySelector('.hero');
-    if (hero) {
-        hero.style.transform = `translateY(${scrolled * 0.5}px)`;
+    if (window.innerWidth > 768) {
+        const scrolled = window.pageYOffset;
+        const hero = document.querySelector('.hero');
+        if (hero) {
+            hero.style.transform = `translateY(${scrolled * 0.5}px)`;
+        }
     }
 });
 
@@ -157,3 +159,33 @@ function checkWhatsappFloat() {
 // Verifica quando o usuário rola a página
 window.addEventListener('scroll', checkWhatsappFloat);
 window.addEventListener('load', checkWhatsappFloat);
+
+// Mobile Menu Toggle
+const mobileMenuToggle = document.getElementById('mobileMenuToggle');
+const mainNav = document.getElementById('mainNav');
+
+if (mobileMenuToggle && mainNav) {
+    mobileMenuToggle.addEventListener('click', () => {
+        mobileMenuToggle.classList.toggle('active');
+        mainNav.classList.toggle('active');
+        document.body.style.overflow = mainNav.classList.contains('active') ? 'hidden' : '';
+    });
+
+    // Fecha o menu ao clicar em um link
+    navLinks.forEach(link => {
+        link.addEventListener('click', () => {
+            mobileMenuToggle.classList.remove('active');
+            mainNav.classList.remove('active');
+            document.body.style.overflow = '';
+        });
+    });
+
+    // Fecha o menu ao clicar fora
+    document.addEventListener('click', (e) => {
+        if (!mainNav.contains(e.target) && !mobileMenuToggle.contains(e.target)) {
+            mobileMenuToggle.classList.remove('active');
+            mainNav.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+    });
+}

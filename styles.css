@@ -878,84 +878,399 @@ body::after {
     }
 }
 
-/* Responsive */
+/* Mobile Menu Toggle */
+.mobile-menu-toggle {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 5px;
+    z-index: 1001;
+}
+
+.mobile-menu-toggle span {
+    width: 28px;
+    height: 3px;
+    background: var(--primary-color);
+    border-radius: 3px;
+    transition: all 0.3s ease;
+}
+
+.mobile-menu-toggle.active span:nth-child(1) {
+    transform: rotate(45deg) translate(7px, 7px);
+}
+
+.mobile-menu-toggle.active span:nth-child(2) {
+    opacity: 0;
+}
+
+.mobile-menu-toggle.active span:nth-child(3) {
+    transform: rotate(-45deg) translate(7px, -7px);
+}
+
+/* Responsive Mobile */
 @media (max-width: 768px) {
-    .hero-title {
-        font-size: 2.5rem;
+    /* Header Mobile */
+    .header {
+        padding: 12px 0;
     }
 
-    .hero-subtitle {
-        font-size: 1.2rem;
-    }
-
-    .nav {
-        gap: 15px;
-    }
-
-    .nav-link {
-        font-size: 0.9rem;
+    .header .container {
+        padding: 0 20px;
     }
 
     .logo {
-        height: 50px;
+        height: 60px;
+    }
+
+    .mobile-menu-toggle {
+        display: flex;
+    }
+
+    .nav {
+        position: fixed;
+        top: 84px;
+        left: 0;
+        right: 0;
+        background: rgba(0, 0, 0, 0.98);
+        backdrop-filter: blur(20px);
+        flex-direction: column;
+        gap: 0;
+        padding: 20px 0;
+        transform: translateY(-100%);
+        opacity: 0;
+        visibility: hidden;
+        transition: all 0.3s ease;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        border-bottom: 2px solid var(--primary-color);
+    }
+
+    .nav.active {
+        transform: translateY(0);
+        opacity: 1;
+        visibility: visible;
+    }
+
+    .nav-link {
+        padding: 15px 30px;
+        border-radius: 0;
+        font-size: 1.1rem;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .nav-link::before {
+        display: none;
+    }
+
+    .nav-link:hover {
+        background: rgba(255, 107, 53, 0.1);
+        transform: none;
+        box-shadow: none;
+    }
+
+    /* Hero Mobile */
+    .hero {
+        height: auto;
+        min-height: 100vh;
+        padding: 120px 20px 60px;
+    }
+
+    .hero-title {
+        font-size: 2.2rem;
+        line-height: 1.2;
+    }
+
+    .title-word {
+        margin: 0 4px;
+    }
+
+    .hero-subtitle {
+        font-size: 1rem;
+        padding: 0 10px;
+        margin-bottom: 25px;
+    }
+
+    .hero-features {
+        flex-direction: column;
+        gap: 12px;
+        margin-bottom: 30px;
+    }
+
+    .feature-badge {
+        padding: 10px 20px;
+        font-size: 0.85rem;
+    }
+
+    .cta-button {
+        padding: 16px 40px;
+        font-size: 1rem;
+    }
+
+    .cta-button svg {
+        width: 16px;
+        height: 16px;
+    }
+
+    .pizza-slice-float {
+        font-size: 2rem;
+        opacity: 0.08;
+    }
+
+    /* Sizes Section Mobile */
+    .sizes-section {
+        padding: 60px 20px;
     }
 
     .section-title {
         font-size: 2rem;
     }
 
-    .menu-grid {
-        grid-template-columns: 1fr;
+    .section-subtitle {
+        font-size: 0.95rem;
+        margin-bottom: 40px;
+    }
+
+    .sizes-display {
+        flex-direction: column;
+        gap: 40px;
+        align-items: center;
+    }
+
+    .size-item {
+        width: 100%;
+        max-width: 300px;
+        align-items: center;
+    }
+
+    .pizza-svg.broto {
+        width: 160px;
+        height: 160px;
+    }
+
+    .pizza-svg.grande {
+        width: 220px;
+        height: 220px;
+    }
+
+    .pizza-svg.gigante {
+        width: 260px;
+        height: 260px;
+    }
+
+    .size-item h3 {
+        font-size: 1.4rem;
+    }
+
+    .size-info {
+        font-size: 0.95rem;
+    }
+
+    /* Price Tables Mobile */
+    .price-table-section {
+        padding: 60px 20px;
     }
 
     .price-tables {
         grid-template-columns: 1fr;
+        gap: 20px;
     }
 
+    .price-card {
+        padding: 25px;
+    }
+
+    .price-card h3 {
+        font-size: 1.4rem;
+    }
+
+    /* Menu Section Mobile */
+    .menu-section {
+        padding: 60px 20px;
+    }
+
+    .category-title {
+        font-size: 1.2rem;
+    }
+
+    .badge {
+        padding: 8px 18px;
+        font-size: 0.85rem;
+    }
+
+    .menu-grid {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+
+    .menu-item {
+        padding: 18px;
+    }
+
+    .menu-item h4 {
+        font-size: 1.1rem;
+    }
+
+    .menu-item p {
+        font-size: 0.85rem;
+    }
+
+    /* Bordas Mobile */
+    .bordas-grid {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+
+    .borda-item {
+        padding: 20px;
+    }
+
+    .borda-item h4 {
+        font-size: 1.2rem;
+    }
+
+    .borda-price {
+        font-size: 1.4rem;
+    }
+
+    /* Esfirras Mobile */
     .esfirras-grid {
-        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+    }
+
+    .esfirra-item {
+        padding: 15px;
+    }
+
+    .esfirra-item h4 {
+        font-size: 0.95rem;
+    }
+
+    .esfirra-price {
+        font-size: 1rem;
+    }
+
+    /* WhatsApp Mobile */
+    .whatsapp-float {
+        bottom: 20px;
+        right: 20px;
+        width: 60px;
+        height: 60px;
+    }
+
+    .whatsapp-float svg {
+        width: 28px;
+        height: 28px;
+    }
+
+    .whatsapp-float:hover {
+        width: 60px;
+        padding-left: 0;
+        justify-content: center;
+    }
+
+    .whatsapp-float-text {
+        display: none;
+    }
+
+    .whatsapp-cta {
+        padding: 50px 20px;
+    }
+
+    .whatsapp-button {
+        padding: 18px 35px;
+        font-size: 1.3rem;
+        gap: 12px;
+    }
+
+    .whatsapp-icon {
+        width: 35px;
+        height: 35px;
+    }
+
+    /* Footer Mobile */
+    .footer {
+        padding: 30px 20px;
+    }
+
+    .footer-logo {
+        height: 60px;
+    }
+
+    .footer p {
+        font-size: 0.85rem;
     }
 }
 
 @media (max-width: 480px) {
+    .logo {
+        height: 50px;
+    }
+
     .hero-title {
-        font-size: 2rem;
+        font-size: 1.8rem;
+    }
+
+    .title-word {
+        margin: 0 2px;
     }
 
     .hero-subtitle {
-        font-size: 1rem;
+        font-size: 0.9rem;
     }
 
     .cta-button {
-        padding: 15px 35px;
+        padding: 14px 32px;
+        font-size: 0.95rem;
+    }
+
+    .section-title {
+        font-size: 1.7rem;
+    }
+
+    .pizza-svg.broto {
+        width: 140px;
+        height: 140px;
+    }
+
+    .pizza-svg.grande {
+        width: 190px;
+        height: 190px;
+    }
+
+    .pizza-svg.gigante {
+        width: 230px;
+        height: 230px;
+    }
+
+    .esfirras-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .whatsapp-button {
+        padding: 16px 28px;
+        font-size: 1.1rem;
+    }
+
+    .whatsapp-button span {
         font-size: 1rem;
-    }
-
-    .header .container {
-        flex-direction: column;
-        gap: 15px;
-    }
-
-    .nav {
-        flex-wrap: wrap;
-        justify-content: center;
     }
 }
 
 /* Scroll Animations */
-.menu-item,
+.menu-item {
+    animation: none;
+    opacity: 1;
+}
+
 .price-card,
 .borda-item,
 .esfirra-item {
-    opacity: 0;
-    animation: fadeInUp 0.6s ease forwards;
+    animation: none;
+    opacity: 1;
 }
-
-.menu-item:nth-child(1) { animation-delay: 0.1s; }
-.menu-item:nth-child(2) { animation-delay: 0.2s; }
-.menu-item:nth-child(3) { animation-delay: 0.3s; }
-.menu-item:nth-child(4) { animation-delay: 0.4s; }
-.menu-item:nth-child(5) { animation-delay: 0.5s; }
 
 /* Smooth Scrolling */
 html {

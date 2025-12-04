@@ -14,7 +14,14 @@
     <header class="header">
         <div class="container">
             <img src="9fdc3815e3e2f1860754e3cacca54421.png" alt="Brooklyn Pizzaria" class="logo">
-            <nav class="nav">
+            <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <nav class="nav" id="mainNav">
+                <a href="#tamanhos" class="nav-link">Tamanhos</a>
+                <a href="#precos" class="nav-link">Preços</a>
                 <a href="#pizzas" class="nav-link">Pizzas</a>
                 <a href="#doces" class="nav-link">Doces</a>
                 <a href="#esfirras" class="nav-link">Esfirras</a>
@@ -57,7 +64,7 @@
     </section>
 
     <!-- Seção de Tamanhos -->
-    <section class="sizes-section">
+    <section class="sizes-section" id="tamanhos">
         <div class="container">
             <h2 class="section-title">Tamanhos</h2>
             <p class="section-subtitle">Informação importante</p>
@@ -173,7 +180,7 @@
     </section>
 
     <!-- Tabela de Preços -->
-    <section class="price-table-section">
+    <section class="price-table-section" id="precos">
         <div class="container">
             <div class="price-tables">
                 <div class="price-card">
