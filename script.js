@@ -135,3 +135,25 @@ if ('IntersectionObserver' in window) {
         imageObserver.observe(element);
     });
 }
+
+// Controle do botão flutuante do WhatsApp
+const whatsappFloat = document.getElementById('whatsappFloat');
+const whatsappCta = document.getElementById('whatsappCta');
+
+function checkWhatsappFloat() {
+    if (!whatsappFloat || !whatsappCta) return;
+    
+    const ctaPosition = whatsappCta.getBoundingClientRect();
+    const windowHeight = window.innerHeight;
+    
+    // Esconde o botão flutuante quando a seção CTA está visível
+    if (ctaPosition.top < windowHeight) {
+        whatsappFloat.classList.add('hidden');
+    } else {
+        whatsappFloat.classList.remove('hidden');
+    }
+}
+
+// Verifica quando o usuário rola a página
+window.addEventListener('scroll', checkWhatsappFloat);
+window.addEventListener('load', checkWhatsappFloat);
